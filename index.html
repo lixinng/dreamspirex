@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamspireX — Intelligent Digital Solutions</title>
+  <meta name="description" content="Dreamspire IT Solution — AI-powered digital solutions built in Malaysia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="l-en">
+
+  <!-- ─── NAV ─────────────────────────────────────────────────────── -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#home" class="nav__logo">
+        <img src="assets/logo.png"       alt="DreamspireX" class="nav__logo-img logo-dark">
+        <img src="assets/logo-light.png" alt="DreamspireX" class="nav__logo-img logo-light">
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="#home"     class="nav__link">Home</a>
+        <a href="#about"    class="nav__link">About</a>
+        <a href="#services" class="nav__link">Services</a>
+        <a href="#contact"  class="nav__link">Contact</a>
+      </div>
+      <!-- Language Toggle -->
+      <div class="lang-sw" id="lang-sw">
+        <button class="ls-btn active" data-l="en">EN</button>
+        <button class="ls-btn" data-l="zh">中文</button>
+      </div>
+      <a href="#contact" class="nav__cta">Get Started</a>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HOME ─────────────────────────────────────────────────────── -->
+  <section id="home" class="s-hero">
+    <div class="hero__bg"></div>
+    <canvas id="canvas"></canvas>
+    <div class="hero__body">
+      <div class="hero__badge reveal">
+        <span class="pulse-dot"></span>
+        Malaysia-Based Digital &amp; Software Studio
+      </div>
+      <h1 class="hero__h1 reveal">
+        <span class="line">We Build</span>
+        <span class="line grad">Intelligent</span>
+        <span class="line">Digital Solutions</span>
+      </h1>
+      <p class="hero__sub reveal t-en">From web design to AI-powered platforms — we turn your vision into scalable technology built for the real world.</p>
+      <p class="hero__sub reveal t-zh">从网页设计到 AI 驱动平台，我们将您的想法转化为可落地、可扩展的技术解决方案。</p>
+      <div class="hero__btns reveal">
+        <a href="#services" class="btn btn-primary">Explore Our Services</a>
+        <a href="#contact"  class="btn btn-ghost">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero__3d" id="hero3d"></div>
+    <div class="hero__scroll">
+      <div class="scroll-wrap"><span></span></div>
+    </div>
+  </section>
+
+  <!-- ─── WHY ──────────────────────────────────────────────────────── -->
+  <section class="s-why">
+    <div class="wrap">
+      <div class="why__grid">
+        <div class="why__copy">
+          <span class="label reveal">Why DreamspireX · 为什么选择我们</span>
+          <h2 class="h2 reveal">We don't just<br>write code.</h2>
+          <p class="body-text reveal t-en">At Dreamspire IT Solution, we solve problems. Founded by a team with expertise in IT Management and Software Development, we bring both business thinking and technical execution to every project.</p>
+          <p class="body-text reveal t-zh">在 Dreamspire IT Solution，我们不只是写代码——我们解决问题。由拥有 IT Management 与软件开发专业背景的团队创立，我们将商业思维与技术执行力融入每一个项目。</p>
+        </div>
+        <div class="why__stats">
+          <div class="stat-card reveal" data-delay="0">
+            <div class="stat-num"><span class="counter" data-target="3">0</span><sup>+</sup></div>
+            <div class="stat-lbl">
+              <span class="t-en">Core Services</span>
+              <span class="t-zh">核心服务</span>
+            </div>
+          </div>
+          <div class="stat-card reveal" data-delay="120">
+            <div class="stat-num"><span class="counter" data-target="75">0</span><sup>%</sup></div>
+            <div class="stat-lbl">
+              <span class="t-en">Malaysian digital consumers use AI tools</span>
+              <span class="t-zh">马来西亚数字消费者使用 AI 工具</span>
+            </div>
+          </div>
+          <div class="stat-card reveal" data-delay="240">
+            <div class="stat-num flag">#1 <span>🇲🇾</span></div>
+            <div class="stat-lbl">
+              <span class="t-en">First AI multi-vendor marketplace in Malaysia</span>
+              <span class="t-zh">马来西亚首个 AI 多商家电商平台</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── QUICKCART BANNER ──────────────────────────────────────────── -->
+  <section class="s-banner">
+    <div class="wrap">
+      <div class="banner reveal">
+        <div class="banner__glow-l"></div>
+        <div class="banner__glow-r"></div>
+        <div class="banner__copy">
+          <span class="label">Flagship Product · 旗舰产品</span>
+          <h3 class="banner__h3">Introducing Quickcart</h3>
+          <p class="t-en">Malaysia's first AI-driven multi-vendor e-commerce platform. Instead of asking users to <em>search</em>, Quickcart understands what they need — then recommends the best match from merchants across multiple industries.</p>
+          <p class="t-zh">马来西亚首个 AI 驱动的多商家电商平台。无需搜索，AI 理解需求后直接从跨行业商家中推荐最合适的产品。</p>
+
+          <div class="qc-feat-list">
+            <div class="qc-feat-item">
+              <div class="feat-dot"></div>
+              <div>
+                <strong class="t-en">Conversational AI Shopping</strong>
+                <strong class="t-zh">对话式 AI 购物</strong>
+                <span class="t-en"> — Describe by chat or photo</span>
+                <span class="t-zh"> — 文字或图片描述需求</span>
+              </div>
+            </div>
+            <div class="qc-feat-item">
+              <div class="feat-dot"></div>
+              <div>
+                <strong class="t-en">Multi-Vendor Marketplace</strong>
+                <strong class="t-zh">多商家平台</strong>
+                <span class="t-en"> — One platform, multiple industries</span>
+                <span class="t-zh"> — 一个平台，覆盖多行业</span>
+              </div>
+            </div>
+            <div class="qc-feat-item">
+              <div class="feat-dot"></div>
+              <div>
+                <strong class="t-en">75% of Malaysian consumers use AI tools</strong>
+                <strong class="t-zh">75% 马来西亚消费者使用 AI 工具</strong>
+              </div>
+            </div>
+            <div class="qc-feat-item">
+              <div class="feat-dot"></div>
+              <div>
+                <strong class="t-en">0 direct local competitors with all 3 technologies</strong>
+                <strong class="t-zh">本地唯一同时结合三项技术的平台</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="qc-stats">
+            <div class="qc-stat-item">
+              <span class="qc-stat-num" style="font-size:1.1rem;letter-spacing:.04em">Multi</span>
+              <span class="qc-stat-lbl t-en">Industry Platform</span>
+              <span class="qc-stat-lbl t-zh">跨行业平台</span>
+            </div>
+            <div class="qc-stat-div"></div>
+            <div class="qc-stat-item">
+              <span class="qc-stat-num" style="font-size:1.1rem;letter-spacing:.04em">AI</span>
+              <span class="qc-stat-lbl t-en">Powered Shopping</span>
+              <span class="qc-stat-lbl t-zh">AI 驱动购物</span>
+            </div>
+            <div class="qc-stat-div"></div>
+            <div class="qc-stat-item">
+              <span class="qc-stat-num">#1</span>
+              <span class="qc-stat-lbl t-en">In Malaysia</span>
+              <span class="qc-stat-lbl t-zh">马来西亚首创</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary" style="margin-top:24px">Get in Touch · 联系我们</a>
+        </div>
+        <div class="banner__visual">
+          <!-- Order notification -->
+          <div class="qc-notif">
+            <span class="qc-notif__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+            </span>
+            <div>
+              <div class="qc-notif__title">New Order!</div>
+              <div class="qc-notif__sub">Rose Bouquet · RM68</div>
+            </div>
+          </div>
+          <!-- AI orb -->
+          <div class="orb">
+            <div class="orb-r r1"></div>
+            <div class="orb-r r2"></div>
+            <div class="orb-r r3"></div>
+            <div class="orb-r r4"></div>
+            <div class="orb-core"><span>AI</span></div>
+          </div>
+          <!-- Floating category chips -->
+          <div class="qc-chip qc-c1">Fashion</div>
+          <div class="qc-chip qc-c2">Food</div>
+          <div class="qc-chip qc-c3">Flowers</div>
+          <div class="qc-chip qc-c4">Beauty</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────────────── -->
+  <section id="about" class="s-about">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <span class="label">About Us · 关于我们</span>
+        <h2 class="h2">Technology that works <span class="grad">for people</span></h2>
+      </header>
+
+      <div class="about__intro">
+        <p class="reveal t-en">Dreamspire IT Solution is a Malaysia-based technology company dedicated to building intelligent, user-centric digital solutions. We believe technology should work <em>for</em> people — not the other way around. We were founded by two professionals with complementary expertise: business strategy and software engineering.</p>
+        <p class="reveal t-zh">Dreamspire IT Solution 是一家位于马来西亚的科技公司，致力于打造以用户为中心的智能数字解决方案。我们相信，科技应该为人服务，而不是让人去适应科技。公司由两位具备互补专长的创办人共同成立——商业策略与软件工程的结合。</p>
+      </div>
+
+      <!-- Values -->
+      <div class="values-grid">
+        <div class="val-item reveal" data-delay="0">
+          <div class="val-num">01</div>
+          <h4>Innovation First · 创新优先</h4>
+          <p class="t-en">We challenge the status quo and build solutions that didn't exist before.</p>
+          <p class="t-zh">我们挑战现状，打造前所未有的解决方案。</p>
+        </div>
+        <div class="val-item reveal" data-delay="80">
+          <div class="val-num">02</div>
+          <h4>User-Centered · 以用户为核心</h4>
+          <p class="t-en">Every decision starts with the end user's experience in mind.</p>
+          <p class="t-zh">每一个决策都从用户体验出发。</p>
+        </div>
+        <div class="val-item reveal" data-delay="160">
+          <div class="val-num">03</div>
+          <h4>Built to Scale · 可持续扩展</h4>
+          <p class="t-en">We design systems that grow with your business, not against it.</p>
+          <p class="t-zh">我们构建随业务一起成长的系统，而非制约发展的瓶颈。</p>
+        </div>
+        <div class="val-item reveal" data-delay="240">
+          <div class="val-num">04</div>
+          <h4>Partnership Mindset · 伙伴思维</h4>
+          <p class="t-en">We don't just deliver projects — we become your technology partner.</p>
+          <p class="t-zh">我们不只是交付项目——我们成为您的技术伙伴。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ───────────────────────────────────────────────────── -->
+  <section id="services" class="s-services">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <span class="label">Services · 服务</span>
+        <h2 class="h2">End-to-end <span class="grad">technology services</span></h2>
+        <p class="sec-desc t-en">Whatever stage your business is at, we have the expertise to move you forward.</p>
+        <p class="sec-desc t-zh">无论您的企业处于哪个阶段，我们都能帮助您迈向下一步。</p>
+      </header>
+
+      <div class="svc-grid">
+        <div class="svc-card tilt reveal" data-delay="0">
+          <div class="svc-num">01</div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h3>Software Development<span class="zh-sub">软件开发</span></h3>
+          <p>Custom software, web apps, mobile apps, and AI-integrated platforms — scalable and production-ready from day one.</p>
+          <ul class="svc-list">
+            <li>Custom web applications &amp; platforms</li>
+            <li>AI-powered features and chatbots</li>
+            <li>E-commerce &amp; multi-vendor systems</li>
+            <li>API development &amp; integrations</li>
+            <li>Database architecture &amp; back-end</li>
+          </ul>
+        </div>
+        <div class="svc-card tilt reveal" data-delay="150">
+          <div class="svc-num">02</div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+          </div>
+          <h3>Web Design<span class="zh-sub">网页设计</span></h3>
+          <p>Clean, modern, conversion-focused websites that reflect your brand and deliver exceptional UX across all devices.</p>
+          <ul class="svc-list">
+            <li>Corporate websites &amp; landing pages</li>
+            <li>E-commerce storefronts</li>
+            <li>UI/UX design &amp; prototyping</li>
+            <li>Mobile-responsive layouts</li>
+            <li>Brand identity &amp; visual systems</li>
+          </ul>
+        </div>
+        <div class="svc-card tilt reveal" data-delay="300">
+          <div class="svc-num">03</div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h3>IT Consulting<span class="zh-sub">IT 咨询</span></h3>
+          <p>Help businesses evaluate digital needs, plan transformation roadmaps, and choose the right tools — saving time and avoiding costly mistakes.</p>
+          <ul class="svc-list">
+            <li>Technology needs assessment</li>
+            <li>Digital transformation strategy</li>
+            <li>Platform &amp; tool selection</li>
+            <li>System architecture planning</li>
+            <li>Tech stack recommendations</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ────────────────────────────────────────────────────── -->
+  <section id="contact" class="s-contact">
+    <div class="wrap">
+      <header class="sec-hd reveal">
+        <span class="label">Contact · 联系我们</span>
+        <h2 class="h2">Let's build something <span class="grad">amazing together</span></h2>
+        <p class="sec-desc t-en">Have a project in mind? Want to learn more about Quickcart? We'd love to hear from you.</p>
+        <p class="sec-desc t-zh">有项目想法？想了解更多关于 Quickcart 的信息？欢迎随时联系我们。</p>
+      </header>
+
+      <div class="contact__grid">
+        <div class="contact__info reveal">
+          <div class="c-detail">
+            <div class="c-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="c-lbl">Location · 地点</div>
+              <div class="c-val">Malaysia 马来西亚</div>
+            </div>
+          </div>
+          <div class="c-detail">
+            <div class="c-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="c-lbl">Email · 电邮</div>
+              <div class="c-val">tanyang8278@gmail.com</div>
+            </div>
+          </div>
+          <div class="c-detail">
+            <div class="c-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="c-lbl">WhatsApp</div>
+              <div class="c-val"><a href="https://wa.me/60111038278" target="_blank" rel="noopener" class="wa-link">011-1103 8278</a></div>
+            </div>
+          </div>
+          <div class="c-detail">
+            <div class="c-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div>
+              <div class="c-lbl">Services · 服务</div>
+              <div class="c-val">Software Dev · Web Design · IT Consulting</div>
+            </div>
+          </div>
+
+        </div>
+
+        <form class="contact__form reveal" data-delay="150" id="cform" novalidate>
+          <input type="hidden" name="access_key" value="0950d56c-2324-43e6-a037-77eacfe4dd70">
+          <input type="hidden" name="subject" value="New enquiry from DreamspireX website">
+          <div class="form-row">
+            <div class="fg">
+              <label>Name · 姓名</label>
+              <input type="text" name="name" placeholder="Your name" required>
+            </div>
+            <div class="fg">
+              <label>Email · 电邮</label>
+              <input type="email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Company (Optional) · 公司（可选）</label>
+            <input type="text" name="company" placeholder="Your company">
+          </div>
+          <div class="fg">
+            <label>Subject · 主题</label>
+            <select name="topic">
+              <option value="">Select a topic…</option>
+              <option>Software Development · 软件开发</option>
+              <option>Web Design · 网页设计</option>
+              <option>IT Consulting · IT 咨询</option>
+              <option>Quickcart Partnership · Quickcart 合作洽谈</option>
+              <option>Other · 其他</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Message · 留言</label>
+            <textarea name="message" placeholder="Tell us about your project…" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message · 发送</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/logo.png"       alt="DreamspireX" class="footer__logo-img logo-dark">
+          <img src="assets/logo-light.png" alt="DreamspireX" class="footer__logo-img logo-light">
+          <p class="t-en">Intelligent digital solutions built for the real world.</p>
+          <p class="t-zh">为现实世界打造的智能数字解决方案。</p>
+          <div class="footer__social">
+            <span class="social-icon" title="Instagram — Coming Soon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="social-icon" title="Facebook — Coming Soon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </span>
+            <span class="social-icon" title="LinkedIn — Coming Soon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 4-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h5>Navigation</h5>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h5>Services</h5>
+          <a href="#services">Software Development</a>
+          <a href="#services">Web Design</a>
+          <a href="#services">IT Consulting</a>
+        </div>
+        <div class="footer__col">
+          <h5>Product</h5>
+          <a href="#services">Quickcart</a>
+          <a href="#contact">Partner with Us</a>
+          <a href="#contact">Invest</a>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <span>© 2026 DREAM SPIRE TRADING. All rights reserved. Built in Malaysia 🇲🇾</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── FLOATING WHATSAPP ─────────────────────────────────────────── -->
+  <a href="https://wa.me/60111038278" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
