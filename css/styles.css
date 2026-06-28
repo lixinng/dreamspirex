@@ -87,8 +87,8 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
   font-family: var(--disp); font-size: clamp(26px, 3.6vw, 42px);
   font-weight: 700; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 20px;
 }
-.body-text  { font-size: 18px; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
-.sec-desc   { font-size: 18px; color: var(--muted); max-width: 600px; margin: 12px auto 0; line-height: 1.75; text-align: center; }
+.body-text  { font-size: clamp(14px, 1.6vw, 16px); color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+.sec-desc   { font-size: clamp(14px, 1.6vw, 16px); color: var(--muted); max-width: 600px; margin: 12px auto 0; line-height: 1.75; text-align: center; }
 .zh-sub { font-size: .6em; font-weight: 400; color: rgba(255,255,255,.38); letter-spacing: 0; display: block; margin-top: 2px; }
 
 /* ─── SCROLL REVEAL ────────────────────────────────────────────────── */
