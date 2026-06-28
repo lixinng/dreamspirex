@@ -680,6 +680,9 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
   .form-row { grid-template-columns: 1fr; }
   .banner { flex-direction: column; padding: 44px 32px; text-align: center; }
   .banner__copy p { margin-left: auto; margin-right: auto; }
+  .qc-feat-list { max-width: 360px; margin-left: auto; margin-right: auto; }
+  .qc-feat-item { text-align: left; }
+  .qc-stats { justify-content: center; }
   .spotlight { padding: 40px 24px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__bar { flex-direction: column; text-align: center; }
