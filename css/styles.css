@@ -173,7 +173,6 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
   background: url('../assets/hero-bg.jpg') center center / cover no-repeat;
   animation: hero-drift 18s ease-in-out infinite alternate;
   will-change: transform;
-  filter: blur(1px);
 }
 @keyframes hero-drift {
   0%   { transform: scale(1)    translate(0, 0); }
@@ -354,7 +353,12 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
 /* ─── AI ORB ──────────────────────────────────────────────────────── */
 .orb {
   position: relative; width: 220px; height: 220px;
-  filter: drop-shadow(0 0 28px rgba(136,102,255,.4));
+}
+/* static glow instead of per-frame drop-shadow on spinning children */
+.orb::after {
+  content: ''; position: absolute; inset: 15%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(136,102,255,.35), transparent 70%);
+  z-index: -1; pointer-events: none;
 }
 
 .orb-r { position: absolute; border-radius: 50%; }
@@ -715,22 +719,20 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
   body, a, button, .btn, input, select, textarea, label { cursor: none !important; }
 }
 #cur-dot {
-  position: fixed; width: 7px; height: 7px; border-radius: 50%;
+  position: fixed; left: 0; top: 0; width: 7px; height: 7px; border-radius: 50%;
   background: var(--c); pointer-events: none; z-index: 9999;
-  left: -20px; top: -20px;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
   box-shadow: 0 0 12px var(--c), 0 0 24px rgba(136,102,255,.5);
-  transition: transform .2s var(--ease), opacity .2s;
-  will-change: left, top;
+  transition: opacity .2s;
+  will-change: transform;
 }
 #cur-ring {
-  position: fixed; width: 38px; height: 38px; border-radius: 50%;
+  position: fixed; left: 0; top: 0; width: 38px; height: 38px; border-radius: 50%;
   border: 1px solid rgba(136,102,255,.5); pointer-events: none; z-index: 9998;
-  left: -40px; top: -40px;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
   transition: width .25s var(--ease), height .25s var(--ease),
-              border-color .2s, background .2s;
-  will-change: left, top;
+              border-color .2s, background .2s, opacity .2s;
+  will-change: transform;
 }
 #cur-ring.expand {
   width: 58px; height: 58px;
@@ -758,4 +760,115 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
   49% { transform: translate(-2px, 0);   clip-path: inset(4%  0 82% 0); filter: hue-rotate(30deg); }
 }
 .hero__h1.glitch-on { animation: g-flash .55s linear forwards; }
+
+/* ─── PERFORMANCE OVERRIDE ──────────────────────────────────────────
+   backdrop-filter (frosted glass) is the #1 cause of scroll/mouse lag
+   in Safari — every repaint re-blurs the content behind the element.
+   Backgrounds are already opaque enough, so just drop the blur. */
+*, *::before, *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.nav { background: rgba(0,0,0,.85) !important; }
+.nav.scrolled { background: rgba(0,0,0,.94) !important; }
+
+/* ─── PRICING ───────────────────────────────────────────────────── */
+.price-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+  margin-top: 36px;
+}
+.price-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px; padding: 28px 26px;
+}
+.price-card h4 { font-size: 1.05rem; margin: 0 0 10px; }
+.price-card .price {
+  font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; font-weight: 600;
+  background: linear-gradient(90deg, #8866ff, #44aaff);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+.price-card .price-unit { font-size: .9rem; -webkit-text-fill-color: rgba(255,255,255,.5); }
+.price-card p { font-size: .9rem; color: rgba(255,255,255,.6); line-height: 1.6; margin: 0; }
+.price-terms {
+  margin-top: 32px; background: rgba(136,102,255,.06);
+  border: 1px solid rgba(136,102,255,.18); border-radius: 16px; padding: 28px 30px;
+}
+.price-terms > h4 { font-size: 1.05rem; margin: 0 0 16px; }
+.terms-list { list-style: none; padding: 0; margin: 0 0 16px; }
+.terms-list li {
+  position: relative; padding-left: 22px; margin-bottom: 10px;
+  font-size: .92rem; color: rgba(255,255,255,.72); line-height: 1.6;
+}
+.terms-list li::before { content: '→'; position: absolute; left: 0; color: #8866ff; }
+.terms-links { font-size: .9rem; color: rgba(255,255,255,.6); margin: 0; }
+.terms-links a { color: #8866ff; text-decoration: none; }
+.terms-links a:hover { text-decoration: underline; }
+@media (max-width: 980px) { .price-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .price-grid { grid-template-columns: 1fr; } }
+
+/* ─── PRICE TABLE (grouped) ─────────────────────────────────────── */
+.price-table { margin-top: 40px; }
+.price-group { margin-bottom: 34px; }
+.pg-title {
+  font-size: .82rem; text-transform: uppercase; letter-spacing: .1em;
+  color: #9b87ff; margin: 0 0 6px; padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.price-row {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 24px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.pr-info h4 { font-size: 1rem; margin: 0 0 4px; font-weight: 600; }
+.pr-info p { font-size: .85rem; color: rgba(255,255,255,.55); margin: 0; line-height: 1.55; }
+.pr-price {
+  flex-shrink: 0; text-align: right; white-space: nowrap;
+  font-family: 'Space Grotesk', sans-serif; font-size: 1.12rem; font-weight: 600;
+  background: linear-gradient(90deg, #8866ff, #44aaff);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.pr-price span {
+  display: block; font-size: .72rem; font-weight: 400; margin-top: 3px;
+  color: rgba(255,255,255,.42); -webkit-text-fill-color: rgba(255,255,255,.42);
+}
+@media (max-width: 600px) {
+  .price-row { flex-direction: column; gap: 6px; }
+  .pr-price { text-align: left; }
+}
+
+/* ─── FOOTER LEGAL / COMPANY INFO ───────────────────────────────── */
+.footer__legal {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;
+  padding: 26px 0 18px; margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.footer__company { display: flex; flex-direction: column; gap: 5px; font-size: .85rem; color: rgba(255,255,255,.55); }
+.footer__company strong { color: rgba(255,255,255,.85); font-size: .95rem; }
+.footer__policies { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
+.footer__policies a { color: rgba(255,255,255,.6); text-decoration: none; font-size: .85rem; }
+.footer__policies a:hover { color: #8866ff; }
+
+/* ─── LEGAL / POLICY PAGES ──────────────────────────────────────── */
+.legal-wrap { max-width: 820px; margin: 0 auto; padding: 130px 24px 80px; }
+.legal-wrap h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; margin: 0 0 8px; }
+.legal-wrap .legal-meta { color: rgba(255,255,255,.45); font-size: .85rem; margin-bottom: 40px; }
+.legal-wrap h2 { font-size: 1.25rem; margin: 36px 0 12px; color: #fff; }
+.legal-wrap h3 { font-size: 1.02rem; margin: 22px 0 8px; color: rgba(255,255,255,.9); }
+.legal-wrap p, .legal-wrap li { color: rgba(255,255,255,.7); line-height: 1.75; font-size: .95rem; }
+.legal-wrap ul { padding-left: 22px; margin: 10px 0; }
+.legal-wrap li { margin-bottom: 8px; }
+.legal-wrap a { color: #8866ff; }
+.legal-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(0,0,0,.9); border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.legal-nav__inner {
+  max-width: 1200px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.legal-nav__inner img { height: 30px; }
+.legal-nav__inner a.back { color: rgba(255,255,255,.7); text-decoration: none; font-size: .9rem; }
+.legal-nav__inner a.back:hover { color: #8866ff; }
+.legal-foot { text-align: center; padding: 30px 24px; color: rgba(255,255,255,.4); font-size: .82rem; border-top: 1px solid rgba(255,255,255,.08); }
 

@@ -46,14 +46,8 @@ window.scrollTo(0, 0);
   Pt.prototype.draw = function () {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    /* hub nodes get a glow effect */
-    if (this.r > 2) {
-      ctx.shadowColor  = `rgba(${C_CYAN},0.9)`;
-      ctx.shadowBlur   = 8;
-    }
     ctx.fillStyle = `rgba(${C_CYAN},${this.o})`;
     ctx.fill();
-    ctx.shadowBlur = 0;
   };
 
   function connect() {
@@ -100,12 +94,15 @@ window.scrollTo(0, 0);
   let particleVisible = true;
   let particleRaf = null;
 
-  function loop() {
+  let lastP = 0;
+  function loop(now) {
     if (!particleVisible) { particleRaf = null; return; }
+    particleRaf = requestAnimationFrame(loop);
+    if (now - lastP < 33) return;   /* cap ~30fps */
+    lastP = now;
     ctx.clearRect(0, 0, W, H);
     pts.forEach(p => { p.update(); p.draw(); });
     connect();
-    particleRaf = requestAnimationFrame(loop);
   }
 
   const heroEl = document.getElementById('home');
@@ -155,6 +152,10 @@ window.scrollTo(0, 0);
       btn.classList.add('active');
       document.body.classList.remove('l-en', 'l-zh');
       document.body.classList.add('l-' + btn.dataset.l);
+      /* <option> can't be toggled via CSS — swap its text on language change */
+      document.querySelectorAll('select option[data-en]').forEach(o => {
+        o.textContent = btn.dataset.l === 'zh' ? o.dataset.zh : o.dataset.en;
+      });
     });
   });
 })();
@@ -205,12 +206,19 @@ window.scrollTo(0, 0);
 /* ─── 3D TILT ON SERVICE CARDS ───────────────────────────────────── */
 (function () {
   document.querySelectorAll('.tilt').forEach(card => {
+    let tilting = false;
     card.addEventListener('mousemove', e => {
-      const r  = card.getBoundingClientRect();
-      const rx = ((e.clientY - r.top)  / r.height - .5) * -14;
-      const ry = ((e.clientX - r.left) / r.width  - .5) *  14;
-      card.style.transition = 'transform .08s ease';
-      card.style.transform  = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px)`;
+      if (tilting) return;
+      tilting = true;
+      const cx = e.clientX, cy = e.clientY;
+      requestAnimationFrame(() => {
+        const r  = card.getBoundingClientRect();
+        const rx = ((cy - r.top)  / r.height - .5) * -14;
+        const ry = ((cx - r.left) / r.width  - .5) *  14;
+        card.style.transition = 'transform .08s ease';
+        card.style.transform  = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px)`;
+        tilting = false;
+      });
     });
     card.addEventListener('mouseleave', () => {
       card.style.transition = 'transform .6s cubic-bezier(.4,0,.2,1)';
@@ -275,13 +283,20 @@ window.scrollTo(0, 0);
     spl.className = 'spl';
     card.appendChild(spl);
 
+    let splPending = false;
     card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      spl.style.background =
-        `radial-gradient(circle 220px at ${x}px ${y}px, rgba(136,102,255,.18), rgba(68,170,255,.06) 55%, transparent 75%)`;
-      spl.style.opacity = '1';
+      if (splPending) return;
+      splPending = true;
+      const cx = e.clientX, cy = e.clientY;
+      requestAnimationFrame(() => {
+        const r = card.getBoundingClientRect();
+        const x = cx - r.left;
+        const y = cy - r.top;
+        spl.style.background =
+          `radial-gradient(circle 220px at ${x}px ${y}px, rgba(136,102,255,.18), rgba(68,170,255,.06) 55%, transparent 75%)`;
+        spl.style.opacity = '1';
+        splPending = false;
+      });
     });
     card.addEventListener('mouseleave', () => { spl.style.opacity = '0'; });
   });
@@ -306,10 +321,9 @@ window.scrollTo(0, 0);
   (function tick() {
     rx += (mx - rx) * .12;
     ry += (my - ry) * .12;
-    dot.style.left  = mx + 'px';
-    dot.style.top   = my + 'px';
-    ring.style.left = rx.toFixed(1) + 'px';
-    ring.style.top  = ry.toFixed(1) + 'px';
+    /* transform/translate3d → GPU compositing, no per-frame layout */
+    dot.style.transform  = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+    ring.style.transform = `translate3d(${rx.toFixed(1)}px, ${ry.toFixed(1)}px, 0) translate(-50%, -50%)`;
     requestAnimationFrame(tick);
   })();
 
@@ -342,9 +356,9 @@ window.scrollTo(0, 0);
   const container = document.getElementById('hero3d');
   if (!container) return;
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: 'high-performance' });
   renderer.setClearColor(0x000000, 0);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   container.appendChild(renderer.domElement);
 
   const scene  = new THREE.Scene();
@@ -450,9 +464,12 @@ window.scrollTo(0, 0);
     }, { threshold: 0.05 }).observe(heroSection);
   }
 
-  function loop() {
+  let last3d = 0;
+  function loop(now) {
     if (!visible) { rafId = null; return; }
     rafId = requestAnimationFrame(loop);
+    if (now - last3d < 33) return;   /* cap ~30fps */
+    last3d = now;
     const t = Date.now() * 0.001;
     lx += (tx - lx) * 0.04;
     ly += (ty - ly) * 0.04;
