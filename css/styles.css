@@ -56,13 +56,13 @@ body::after {
 
 /* ─── LANGUAGE TOGGLE STATES ──────────────────────────────────────── */
 .t-en { color: inherit; }
-.t-zh { color: rgba(255,255,255,.42); font-size: .92em; }
+.t-zh { color: rgba(255,255,255,.42); }
 
 body.l-en .t-zh   { display: none !important; }
 body.l-en .zh-sub { display: none !important; }
 
 body.l-zh .t-en   { display: none !important; }
-body.l-zh .t-zh   { color: inherit !important; font-size: inherit !important; }
+body.l-zh .t-zh   { color: inherit !important; }
 body.l-zh .zh-sub { color: rgba(255,255,255,.55) !important; font-size: .6em !important; }
 
 .stat-lbl span.t-en, .stat-lbl span.t-zh,
