@@ -193,7 +193,7 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
 @media (max-width: 900px) {
   .hero__3d { display: none; }
   .s-hero { justify-content: center; text-align: center; padding: 0 24px; gap: 0; }
-  .hero__body { padding: 88px 0 0; max-width: 840px; }
+  .hero__body { padding: 88px 0 0; max-width: 840px; flex-shrink: 1; width: 100%; }
   .hero__btns { justify-content: center; }
 }
 .hero__body { position: relative; z-index: 3; max-width: 560px; padding-top: 88px; flex-shrink: 0; }
@@ -691,7 +691,8 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
 }
 
 @media (max-width: 600px) {
-  .hero__sub { font-size: 14px; line-height: 1.6; }
+  .hero__body { max-width: 100%; }
+  .hero__sub { font-size: 14px; line-height: 1.6; max-width: 100%; }
 }
 @media (max-width: 480px) {
   .hero__btns { flex-direction: column; align-items: center; }
