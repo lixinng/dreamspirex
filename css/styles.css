@@ -448,7 +448,7 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
 .about__intro {
   max-width: 720px; margin: 0 auto 60px; text-align: center;
 }
-.about__intro p { font-size: 18px; color: var(--muted); line-height: 1.85; margin-bottom: 10px; }
+.about__intro p { font-size: clamp(14px, 1.6vw, 16px); color: var(--muted); line-height: 1.8; margin-bottom: 10px; }
 .about__intro em { font-style: italic; color: rgba(255,255,255,.8); }
 
 /* Team */
