@@ -690,6 +690,9 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
   .orb-core { inset: 64px; }
 }
 
+@media (max-width: 600px) {
+  .hero__sub { font-size: 14px; line-height: 1.6; }
+}
 @media (max-width: 480px) {
   .hero__btns { flex-direction: column; align-items: center; }
   .values-grid { grid-template-columns: 1fr; }
