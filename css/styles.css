@@ -872,3 +872,10 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
 .legal-nav__inner a.back:hover { color: #8866ff; }
 .legal-foot { text-align: center; padding: 30px 24px; color: rgba(255,255,255,.4); font-size: .82rem; border-top: 1px solid rgba(255,255,255,.08); }
 
+
+/* ─── CJK TITLE SIZE BALANCE ─────────────────────────────────────────
+   Chinese glyphs fill the em-box more than Latin, so they look larger at
+   the same font-size. Scale Chinese titles down slightly to match. */
+body.l-zh .hero__h1 .t-zh,
+body.l-zh .h2 .t-zh,
+body.l-zh .banner__h3 .t-zh { font-size: .88em !important; }
