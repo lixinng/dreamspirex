@@ -886,3 +886,11 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
 body.l-zh .hero__h1 .t-zh,
 body.l-zh .h2 .t-zh,
 body.l-zh .banner__h3 .t-zh { font-size: .88em !important; }
+
+/* ─── CJK BODY PARAGRAPH SIZE ────────────────────────────────────────
+   The blanket `body.l-zh .t-zh { font-size: inherit !important }` rule
+   overrides per-element sizes in Chinese mode. Re-assert body paragraph
+   sizes so Chinese matches English (16px desktop / 14px mobile). */
+body.l-zh .body-text,
+body.l-zh .sec-desc,
+body.l-zh .about__intro p { font-size: clamp(14px, 1.6vw, 16px) !important; }
