@@ -33,7 +33,7 @@ body {
   overflow-x: clip;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 /* tech grid + ambient glow */
@@ -217,7 +217,7 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
 }
 .hero__h1 .line { display: block; }
 .hero__sub {
-  font-size: clamp(17px, 2.2vw, 20px); color: rgba(255,255,255,.65);
+  font-size: clamp(15px, 1.6vw, 17px); color: rgba(255,255,255,.65);
   line-height: 1.75; margin-bottom: 12px; max-width: 600px; margin-left: auto; margin-right: auto;
 }
 .hero__btns { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; margin-top: 36px; }
@@ -252,7 +252,7 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
 .stat-card:hover { border-color: var(--bdc); background: rgba(136,102,255,.025); }
 
 .stat-num {
-  font-family: var(--disp); font-size: 56px; font-weight: 700;
+  font-family: var(--disp); font-size: 46px; font-weight: 700;
   color: var(--c); line-height: 1; margin-bottom: 10px; letter-spacing: -.03em;
 }
 .stat-num.flag { font-size: 38px; display: flex; align-items: center; gap: 10px; }
@@ -283,7 +283,7 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
   font-family: var(--disp); font-size: clamp(24px, 2.8vw, 36px);
   font-weight: 700; letter-spacing: -.025em; margin-bottom: 14px; margin-top: 6px;
 }
-.banner__copy p { font-size: 17px; color: var(--muted); line-height: 1.8; max-width: 460px; margin-bottom: 4px; }
+.banner__copy p { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 460px; margin-bottom: 4px; }
 .banner__orb { flex-shrink: 0; position: relative; z-index: 2; }
 
 /* ─── QUICKCART BANNER VISUAL ─────────────────────────────────────── */
@@ -508,7 +508,7 @@ body.l-zh .m-lbl span.t-en    { display: none !important; }
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--c); box-shadow: 0 0 16px var(--c);
 }
-.story p { font-size: 17px; color: rgba(255,255,255,.6); line-height: 1.85; margin-bottom: 10px; margin-top: 12px; }
+.story p { font-size: 16px; color: rgba(255,255,255,.6); line-height: 1.85; margin-bottom: 10px; margin-top: 12px; }
 
 /* ─── SERVICES ────────────────────────────────────────────────────── */
 .s-services { padding: 120px 0; background: var(--bg); position: relative; z-index: 10;
